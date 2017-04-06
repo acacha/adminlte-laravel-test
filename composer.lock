@@ -4,22 +4,17 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ca56a0c95d1d791d20166ce27eeab347",
-    "content-hash": "98e442f7f279d38b55aea40a61746fec",
+    "hash": "e72cb2859de265c9b4c48f3b7894d821",
+    "content-hash": "c1de3ab38f551ff84f60f77d18c90a71",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
-            "version": "4.1.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/acacha/adminlte-laravel.git",
-                "reference": "eff6a8d19e2ce7c8faf0fdd667d8b096bc58dc1d"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/acacha/adminlte-laravel/zipball/eff6a8d19e2ce7c8faf0fdd667d8b096bc58dc1d",
+                "type": "path",
+                "url": "../AdminLTE/acacha/adminlte-laravel",
                 "reference": "eff6a8d19e2ce7c8faf0fdd667d8b096bc58dc1d",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "acacha/filesystem": "^0.1.0",
@@ -46,7 +41,22 @@
                     "Acacha\\AdminLTETemplateLaravel\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Acacha\\AdminLTETemplateLaravel\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "./sandbox_setup.sh;cd sandbox;phpunit"
+                ],
+                "check-style": [
+                    "phpcs -p --standard=PSR2.xml --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+                ],
+                "fix-style": [
+                    "phpcbf -p --standard=PSR2.xml --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -60,17 +70,16 @@
             "description": "AdminLTE template applied to Laravel Scaffolding",
             "homepage": "https://github.com/acacha/adminlte-laravel",
             "keywords": [
-                "AdminLTE",
                 "acacha",
                 "admin",
                 "admin-lte",
                 "administrator",
+                "adminlte",
                 "bootstrap",
                 "laravel",
                 "template",
                 "theme"
-            ],
-            "time": "2017-04-05 17:51:15"
+            ]
         },
         {
             "name": "acacha/filesystem",
@@ -3999,7 +4008,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "acacha/admin-lte-template-laravel": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
