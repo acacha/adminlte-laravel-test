@@ -49,7 +49,7 @@
 
 </template>
 
-<style src="./face.css"></style>
+<style src="./fade.css"></style>
 
 <script>
 
@@ -58,7 +58,7 @@ import initialitzeIcheck from './InitializeIcheck'
 import redirect from './redirect'
 
 export default {
-  mixins: [initialitzeIcheck,redirect],
+  mixins: [initialitzeIcheck, redirect],
   data: function () {
     return {
       form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '' })
@@ -80,7 +80,7 @@ export default {
          this.redirect(response)
        })
        .catch(error => {
-         console.log(trans('adminlte_lang_message.registererror') + ':'  + error)
+         console.log(this.trans('adminlte_lang_message.registererror') + ':' + error)
        })
     },
     clearErrors (name) {

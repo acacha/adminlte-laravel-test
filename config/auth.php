@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+        'domain' => 'iesebre.com'
     ],
 
     /*
@@ -68,6 +69,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+            'field' => 'username'
         ],
 
         // 'users' => [
