@@ -1,16 +1,12 @@
 <template>
  <form method="post" @submit.prevent="submit" @keydown="clearErrors($event.target.name)">
   <div class="form-group has-feedback" :class="{ 'has-error': form.errors.has('name') }">
-
    <input type="text" class="form-control" :placeholder="trans('adminlte_lang_message.fullname')" name="name" value="" v-model="form.name" autofocus/>
-
    <span class="glyphicon glyphicon-user form-control-feedback"></span>
    <transition name="fade">
     <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
    </transition>
-
   </div>
-
   <div class="form-group has-feedback" :class="{ 'has-error': form.errors.has('email') }">
    <input type="email" class="form-control" :placeholder="trans('adminlte_lang_message.email')" name="email" value="" v-model="form.email"/>
    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -26,7 +22,7 @@
    </transition>
   </div>
   <div class="form-group has-feedback">
-   <input type="password" class="form-control" :placeholder="trans('adminlte_lang_message.retrypepassword')" name="password_confirmation" v-model="form.password_confirmation"/>
+   <input type="password" class="form-control" :placeholder="trans('adminlte_lang_message.retypepassword')" name="password_confirmation" v-model="form.password_confirmation"/>
    <transition name="fade">
    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
    </transition>
@@ -53,28 +49,16 @@
 
 </template>
 
-<style>
-
-.fade-enter-active, .fade-leave-active {
- transition: opacity 1s ease;
-}
-
-.fade-enter, .fade-leave-to {
- opacity: 0;
-}
-
-</style>
+<style src="./face.css"></style>
 
 <script>
 
 import Form from 'acacha-forms'
+import initialitzeIcheck from './InitializeIcheck'
+import redirect from './redirect'
 
 export default {
-  mounted () {
-    // TODO
-//    let form = new FormData(document.querySelector('form'))
-    this.initialitzeICheck()
-  },
+  mixins: [initialitzeIcheck,redirect],
   data: function () {
     return {
       form: new Form({ name: '', email: '', password: '', password_confirmation: '', terms: '' })
@@ -90,30 +74,14 @@ export default {
     }
   },
   methods: {
-    initialitzeICheck () {
-      var component = this
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%'
-      }).on('ifChecked', function (event) {
-        component.form.set('terms', true)
-        component.form.errors.clear('terms')
-      }).on('ifUnchecked', function (event) {
-        component.form.set('terms', '')
-      })
-    },
     submit () {
       this.form.post('/register')
        .then(response => {
          this.redirect(response)
        })
        .catch(error => {
-         console.log('error registering! ' + error)
+         console.log(trans('adminlte_lang_message.registererror') + ':'  + error)
        })
-    },
-    redirect (response) {
-      window.location.reload()
     },
     clearErrors (name) {
       if (name === 'password_confirmation') name = 'password'
