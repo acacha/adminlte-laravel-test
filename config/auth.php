@@ -15,8 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
-        'domain' => 'iesebre.com'
+        'passwords' => 'users'
     ],
 
     /*
