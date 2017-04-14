@@ -43553,18 +43553,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "href": "#"
+    },
+    domProps: {
+      "textContent": _vm._s(_vm.trans('adminlte_lang_message.conditions'))
     }
-  }, [_vm._v("Terms and conditions")])])])])]), _vm._v(" "), _c('div', {
+  })])])])]), _vm._v(" "), _c('div', {
     staticClass: "col-xs-4 col-xs-push-1"
   }, [_c('button', {
     staticClass: "btn btn-primary btn-block btn-flat",
     attrs: {
       "type": "submit",
       "disabled": _vm.form.errors.any()
+    },
+    domProps: {
+      "textContent": _vm._s(_vm.trans('adminlte_lang_message.register'))
     }
   }, [(_vm.form.submitting) ? _c('i', {
     staticClass: "fa fa-refresh fa-spin"
-  }) : _vm._e(), _vm._v(" Register")])])]), _vm._v(" "), (_vm.form.errors.has('terms')) ? _c('div', {
+  }) : _vm._e()])])]), _vm._v(" "), (_vm.form.errors.has('terms')) ? _c('div', {
     staticClass: "form-group has-feedback",
     class: {
       'has-error': _vm.form.errors.has('terms')
